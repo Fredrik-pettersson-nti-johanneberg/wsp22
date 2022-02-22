@@ -4,7 +4,7 @@ nav{
   text-decoration: none;
   font-size: 1.5rem;
   font: weight 9000px;;
-  background: maroon;
+  background: lightcoral;
   height: 25vh;
   display:flex;
   justify-content:space-around;
@@ -12,9 +12,10 @@ nav{
 }
 body {
   background-color: blueviolet;
-
+  margin: 0%;
 }
 footer{
+  position:fixed; 
+  width:100%;
   background-color: aqua;
-  
 }

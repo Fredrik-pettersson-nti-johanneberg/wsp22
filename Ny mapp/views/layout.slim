@@ -7,12 +7,20 @@ html lang="en"
     link rel="stylesheet" href="css/stilig.css"/
     title Document
   body
-    nav 
-      a href="/register" Register
-      a href="/" Home
-      a href="/loggin" Loggin
-      a href="/show" server
-
+    -if session[:auth] == true  
+      nav 
+        a href="/register" Register
+        a href="/" Home
+        a href="/loggin" Loggin
+        a href="/show" server
+        a href="/loggout" loggisut   
+    -else 
+      nav 
+        a href="/register" Register
+        a href="/" Home
+        a href="/loggin" Loggin
+        a href="/show" server
+        a href="/show" server
     == yield
     footer 
       h1 Hewwwooo (- W -)

@@ -3,7 +3,7 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 
-enable :session
+enable :sessions
 
 def db_called(path)
   db = SQLite3::Database.new(path)
@@ -23,6 +23,11 @@ get("/loggin") do
     slim(:loggin)
 end
 
+get("/loggout") do
+    session[:auth] = false
+  slim(:index)
+end
+
 get("/dumskalle") do
     slim(:dumskalle)
 end
@@ -39,10 +44,13 @@ post("/register") do
       password_digest = BCrypt::Password.create(password)
       db = SQLite3::Database.new("db/data.db")
       db.execute("INSERT INTO users (username,pwdigest,mcname,discordname,age) VALUES (?,?,?,?,?)",username,password_digest,mcname,discordname,age)
+      session[:auth]=true
       redirect("/")
     else
       redirect("/dumskalle")
     end
+    
+
 end
 #loggin
 post("/loggin") do
@@ -56,6 +64,8 @@ post("/loggin") do
   
   if BCrypt::Password.new(pwdigest) == password
     session[:id] = id
+    session[:username] = username
+    session[:auth] = true
     redirect("/show")
   else
     "fel LÖSEN!"
