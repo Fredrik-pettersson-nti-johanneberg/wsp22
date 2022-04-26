@@ -4,5 +4,8 @@ ol
     - servers.each do |element|
         li 
             h3 = element["ip"]
-            h3 = element["id"]
             h3 = element["servername"]
+            a href="/servers/#{element['id']}/update" UPDATE
+        
+        form action="delete/#{element['id']}" method="POST"
+            input type="submit" value="delete"

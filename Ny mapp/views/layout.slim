@@ -9,18 +9,14 @@ html lang="en"
   body
     -if session[:auth] == true  
       nav 
-        a href="/register" Register
+        a href="/servers/new" NewPost
         a href="/" Home
-        a href="/loggin" Loggin
-        a href="/show" server
-        a href="/loggout" loggisut   
+        a href="/loggout" Loggisut 
     -else 
       nav 
         a href="/register" Register
         a href="/" Home
         a href="/loggin" Loggin
-        a href="/show" server
-        a href="/show" server
     == yield
     footer 
       h1 Hewwwooo (- W -)
